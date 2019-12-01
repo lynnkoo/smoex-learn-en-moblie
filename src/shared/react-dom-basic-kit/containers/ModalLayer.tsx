@@ -1,6 +1,5 @@
 import * as React from 'react'
 import uuidv4 from 'uuid/v4'
-import { AppContext } from './Container'
 import { useLocation } from 'react-router'
 
 const TOGGLED_MODALES = {}
@@ -13,8 +12,10 @@ export function asModalProps(props: any) {
   }
 }
 
+export const ModalContext = React.createContext<any>(null)
+
 export function useToggleModal(modal: any, deps: any = []) {
-  const { showModal, closeModal } = React.useContext(AppContext)
+  const { showModal, closeModal } = React.useContext(ModalContext)
   const [activeModal, setActiveModal] = React.useState(null)
   const toggleModal = React.useCallback(() => {
     if (activeModal && !TOGGLED_MODALES[activeModal]) {
@@ -31,8 +32,8 @@ export function useToggleModal(modal: any, deps: any = []) {
   return toggleModal
 }
 
-export function useModalState(modal: any, deps: any = []) {
-  const { showModal, closeModal } = React.useContext(AppContext)
+export function useModal(modal: any, deps: any = []) {
+  const { showModal, closeModal } = React.useContext(ModalContext)
   const [modalId, setModalId] = React.useState()
   const onShowModal = React.useCallback(() => {
     const modalId = showModal(modal)
@@ -45,7 +46,7 @@ export function useModalState(modal: any, deps: any = []) {
 }
 
 export const ModalLayer: React.FC<any> = (props) => {
-  const { setAppContext } = props
+  const { children } = props
   const location = useLocation()
   const [modalsMap, setModalsMap] = React.useState({})
   const [hiddenModals, setHiddenModals] = React.useState([])
@@ -78,12 +79,10 @@ export const ModalLayer: React.FC<any> = (props) => {
     closeModal(key)
   }
 
-  React.useEffect(() => {
-    setAppContext({ showModal, closeModal, removeModal })
-  }, [])
-
+  const modalContext = { showModal, closeModal, removeModal }
   return (
-    <React.Fragment>
+    <ModalContext.Provider value={modalContext}>
+      {children}
       {Object.keys(modalsMap).map((key, i) => {
         return React.createElement(modalsMap[key], {
           key,
@@ -92,6 +91,18 @@ export const ModalLayer: React.FC<any> = (props) => {
           onRemove: () => removeModal(key),
         })
       })}
-    </React.Fragment>
+    </ModalContext.Provider>
   )
+}
+
+export function cloneModalContent(children: any) {
+  return React.cloneElement(children, {
+    onClick: (e: React.MouseEvent) => {
+      e.stopPropagation()
+      const onChildClick = children.props.onClick
+      if (onChildClick) {
+        onChildClick()
+      }
+    },
+  })
 }

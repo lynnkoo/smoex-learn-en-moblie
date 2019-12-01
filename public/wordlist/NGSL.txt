@@ -4,24 +4,24 @@ a bi li ty
 a ble
 a bor tion
 a bout
-a bove
+a bo ve
 a broad
 ab sen ce
-ab so lute
-ab so lute ly
+ab so lu te
+ab so lu te ly
 ab stract
-a buse
-a ca de mi c
+a bu se
+a ca de mic
 ac cept
-ac ce pta ble
+ac cep ta ble
 ac cess
 ac ci dent
-ac co mmo da tion
-ac com pa ny
-ac com pli sh
-ac cord
-ac count
-a ccu rate
+a cco mmo da tion
+a ccom pa ny
+a ccom plish
+a ccord
+a ccount
+a ccu ra te
 a ccu se
 a chie ve
 a chie ve ment
@@ -31,30 +31,30 @@ a cqui si tion
 a cross
 act
 ac tion
-ac tive
+ac ti ve
 ac ti vi ty
 ac tor
 ac tual
 ac tua lly
 ad
 a dapt
-a dd
+add
 a ddi tion
-a ddi tio nal
+a ddi tion al
 ad dress
 a de qua te
 ad just
 ad just ment
 ad mi ni stra tion
-ad mire
+ad mi re
 ad mit
 a dopt
 a dult
 ad van ce
-ad van tage
+ad van ta ge
 ad ven ture
-ad ver tise
-ad ver tise ment
+ad ver ti se
+ad ver ti se ment
 ad vi ce
 ad vi se
 ad vi ser
@@ -80,26 +80,26 @@ a head
 aid
 aim
 air
-air cra ft
-air line
+air craft
+air li ne
 a larm
 al bum
 al co hol
-a live
+a li ve
 all
 a lle ge
 a llow
-a lly
+al ly
 al most
 a lone
 a long
-a lon gsi de
+a long si de
 al rea dy
-al ri ght
+al right
 al so
 al ter
-al ter na tive
-al thou gh
+al ter na ti ve
+al though
 al to ge ther
 al ways
 a maze
@@ -109,7 +109,7 @@ a mount
 a na ly sis
 a na lyst
 a na ly ze
-an cien t
+an cient
 and
 an ger
 an gle
@@ -117,7 +117,7 @@ an gry
 a ni mal
 a nnoun ce
 a nnoun ce ment
-a nnual
+a nnu al
 a no ther
 an swer
 an ti ci pa te
@@ -129,10 +129,10 @@ any more
 any one
 any thing
 any way
-any where
+any whe re
 a part
 a part ment
-a po lo gize
+a po lo gi ze
 a ppa rent
 a ppa rent ly
 a ppeal
@@ -152,7 +152,7 @@ ar chi tec ture
 a rea
 ar gue
 ar gu ment
-a rise
+a ri se
 arm
 ar my
 a round
@@ -160,13 +160,13 @@ a rran ge
 a rran ge ment
 a rrest
 a rri val
-a rrive
+a rri ve
 art
 ar ti cle
 ar tist
 as
-a sha med
-a side
+a sham ed
+a si de
 ask
 a ssess
 a ssess ment
@@ -193,7 +193,7 @@ a tten tion
 a tti tu de
 a ttract
 a ttrac tion
-a ttrac tive
+a ttrac ti ve
 a ttri bu te
 au dien ce
 aunt

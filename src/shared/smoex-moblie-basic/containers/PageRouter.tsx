@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Switch, Route, useLocation } from 'react-router-dom'
 import { Header } from './Header'
-import { useActionCallback } from 'shared/redux-async-kit'
+import { useActionCallback } from 'redux-async-kit'
 import { accountAsyncAction } from 'shared/smoex-frontend-basic/logics/account'
 import { Footer } from './Footer'
 import { PageError } from './PageError'
@@ -48,7 +48,6 @@ export const PageRouter: React.FC<any> = (props) => {
       setPageProps((mProps) => ({ ...mProps, ...pageProps })),
   })
   const { showHeader, showFooter, showInstall } = pageProps
-
   return (
     <PageContext.Provider value={pageContext}>
       {showInstall && <Install />}

@@ -41,3 +41,28 @@
   background-color: #e0e0e0;
   padding: 16px;
 }
+
+.voice-text {
+  &.light {
+    color: gray;
+  }
+
+  &.lighter {
+    color: #ccc;
+  }
+
+  &.space {
+    margin: 0 2px;
+  }
+}
+
+.word-tips {
+  position: absolute;
+  right: 16px;
+}
+
+.word-process {
+  border-bottom: 1px solid #ccc;
+  padding: 16px;
+  position: relative;
+}

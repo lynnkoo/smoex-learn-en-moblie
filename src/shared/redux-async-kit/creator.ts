@@ -1,15 +1,8 @@
-import * as loadable2 from 'react-loadable'
 import * as React from 'react'
 import { injectReducers } from './injector'
 import produce from 'immer'
 import { cloneDeep } from 'lodash'
 import { useScopedAction, useScopedSelector } from './hooks'
-
-const loadable: any = loadable2
-
-// const NoLoading: React.FC = () => {
-//   return 'loading'
-// }
 
 export function createLazyComponent(opts: any) {
   const { loader, injector } = opts

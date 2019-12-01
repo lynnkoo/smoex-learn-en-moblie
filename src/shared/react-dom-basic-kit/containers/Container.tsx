@@ -4,6 +4,8 @@ import { BrowserRouter, useLocation } from 'react-router-dom'
 import uuidv4 from 'uuid/v4'
 import { ModalLayer } from './ModalLayer'
 import { IS_WECHAT_WEBVIEW } from 'shared/smoex-moblie-basic/utils/device'
+import { enhancePopupComponent, usePopupShown } from '../components'
+import { Toast } from '../components/Toast'
 
 type IAppContainerProps = {
   basename?: string
@@ -34,15 +36,28 @@ const ContainerRoute: React.FC = () => {
 
 export const AppContext = React.createContext<any>(null)
 
+export function useToggleToast(text: string) {
+  const { toggleToast } = React.useContext(AppContext)
+  return React.useCallback(() => {
+    toggleToast(text)
+  }, [text])
+}
+
 export const Container: React.FC<IAppContainerProps> = (props) => {
-  const { children, basename, loading } = props
-  const [appContext, setAppContext] = React.useState()
+  const { children, basename } = props
+  const [toasts, setToasts] = React.useState([])
+  const appContext = {
+    toggleToast: (text: string) => setToasts((mToasts) => [...mToasts, text]),
+    removeToast: () => setToasts((mToasts) => mToasts.slice(1)),
+  }
   return (
     <AppContext.Provider value={appContext}>
       <BrowserRouter basename={basename}>
         <ContainerRoute />
-        <ModalLayer setAppContext={setAppContext} />
-        {appContext ? children : loading}
+        {toasts.map((toast, i) => (
+          <Toast key={i}>{toast}</Toast>
+        ))}
+        <ModalLayer>{children}</ModalLayer>
       </BrowserRouter>
     </AppContext.Provider>
   )

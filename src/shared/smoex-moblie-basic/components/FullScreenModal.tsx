@@ -3,6 +3,7 @@ import styles from './styles/Modal.module.scss'
 import {
   enhancePopupComponent,
   usePopupShown,
+  usePopupLayerOverlay,
 } from 'shared/react-dom-basic-kit/components/Popup'
 import { transformStyles } from 'shared/react-dom-basic-kit/utils'
 
@@ -11,25 +12,12 @@ const cx = transformStyles(styles)
 const TFullScreenModal: React.FC<any> = (props: any) => {
   const { isOpen, onClose, onRemove } = props
   const shown = usePopupShown(isOpen)
-  const onTransitionEnd = React.useCallback(() => {
-    if (!shown) {
-      onRemove()
-    }
-  }, [shown])
-  React.useEffect(() => {
-    const popupLayerNode = document.getElementById('PopupLayer')
-    if (popupLayerNode) {
-      if (shown) {
-        popupLayerNode.style.zIndex = '1'
-      } else {
-        popupLayerNode.style.zIndex = null
-      }
-    }
-  }, [shown])
+  usePopupLayerOverlay(shown)
+
   return (
     <div
       className={cx('full-screen-modal', { shown })}
-      onTransitionEnd={onTransitionEnd}
+      onTransitionEnd={onRemove}
     >
       <div className={cx('full-screen-header')} onClick={() => onClose()}>
         X

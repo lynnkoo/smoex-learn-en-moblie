@@ -27,10 +27,6 @@ $header-height: 48px;
   height: $header-height;
   justify-content: space-between;
   padding: 0 16px;
-
-  &.overlay {
-    z-index: 1;
-  }
 }
 
 .header-logo {
@@ -48,9 +44,15 @@ $header-height: 48px;
   overflow-y: scroll;
   // margin-top: $header-height;
   padding: 16px;
-  position: relative;
+  position: absolute;
+  top: 0;
   transform: translateY(-100%);
   transition: transform 0.3s;
+  width: 100%;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 
   &.shown {
     transform: translateY(0);

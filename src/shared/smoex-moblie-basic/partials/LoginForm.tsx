@@ -1,16 +1,25 @@
 import * as React from 'react'
 import { FullScreenModal } from '../components/FullScreenModal'
 import styles from './styles/LoginModal.module.scss'
-import { asModalProps } from 'shared/react-dom-basic-kit'
+import { asModalProps, useToggleToast } from 'shared/react-dom-basic-kit'
 import { useFormState } from 'shared/react-dom-basic-kit/components/Form'
 import { transformStyles } from 'shared/react-dom-basic-kit/utils'
 import { enhanceFormComponent } from 'shared/react-dom-basic-kit/components/Form'
-import { useActionCallback } from 'shared/redux-async-kit'
+import { useActionCallback } from 'redux-async-kit'
 import { accountAsyncAction } from 'shared/smoex-frontend-basic/logics/account/actions'
 import { LoginFormInput } from '././LoginModal'
 import { commonSlice } from 'shared/smoex-frontend-basic'
 
 const cx = transformStyles(styles)
+
+function useErrorToast(error: any) {
+  const toggleToast = useToggleToast(error && error.info)
+  React.useEffect(() => {
+    if (error) {
+      toggleToast()
+    }
+  }, [error])
+}
 
 const TLoginForm: React.FC<any> = (props) => {
   const { translateForm, onCloseModal } = props
@@ -29,6 +38,8 @@ const TLoginForm: React.FC<any> = (props) => {
     await login(account, password)
     onCloseModal()
   }, [login, data])
+
+  useErrorToast(error)
 
   React.useEffect(() => {
     setData({ password: '', verifyCode: '' })
@@ -60,7 +71,7 @@ const TLoginForm: React.FC<any> = (props) => {
       <div className={cx('login-change-type')} onClick={onChangeType}>
         LOGIN BY {loginType !== 'password' ? 'PASSWORD' : 'VERIFY CODE'}
       </div>
-      <div className={cx('login-form-btn')} onClick={onLogin}>
+      <div className={cx('login-form-btn', { loading })} onClick={onLogin}>
         LOGIN{loading && '...'}
       </div>
       <div

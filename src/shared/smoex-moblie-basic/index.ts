@@ -1,4 +1,4 @@
-import { createLazyComponent } from 'shared/redux-async-kit'
+import { createLazyComponent } from 'redux-async-kit'
 import { commonSlice } from 'shared/smoex-frontend-basic'
 
 // export const Pages = createLazyComponent({

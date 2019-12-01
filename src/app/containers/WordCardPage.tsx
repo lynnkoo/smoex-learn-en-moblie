@@ -2,14 +2,15 @@ import * as React from 'react'
 import qs from 'qs'
 import styles from './styles/WordCardPage.module.scss'
 import { transformStyles } from 'shared/react-dom-basic-kit/utils'
-import { useAsyncCallback } from 'shared/redux-async-kit'
+import { useAsyncCallback } from 'redux-async-kit'
 import { api } from 'shared/smoex-frontend-basic/utils'
 import AxiosClient from 'axios'
 import { usePageProps } from 'shared/smoex-moblie-basic/containers/PageRouter'
 import { useLocation } from 'react-router'
-import { useModalState, asModalProps } from 'shared/react-dom-basic-kit'
+import { useModal, asModalProps } from 'shared/react-dom-basic-kit'
 import { ConfirmModal } from '../../shared/smoex-moblie-basic/components/ConfirmModal'
 import jsonp from 'jsonp'
+import { TipsModal } from 'shared/smoex-moblie-basic/components/TipsModal'
 const cx = transformStyles(styles)
 
 type IWordCardPageProps = {}
@@ -72,6 +73,84 @@ function useLocationSearch() {
   return qs.parse(search, { ignoreQueryPrefix: true })
 }
 
+const WordVoiceText: React.FC<any> = (props) => {
+  const { voice } = props
+
+  const voiceChars = React.useMemo(() => {
+    if (!voice) {
+      return null
+    }
+    return voice.split(' ').map((x: string) => {
+      const chars = []
+      if (x.charAt(0) === x.charAt(1)) {
+        chars.push({ c: x.charAt(0), s: 'lighter' })
+        x = x.slice(1, x.length)
+      }
+      x.split('').forEach((c) => {
+        if ('aeiouy'.includes(c)) {
+          chars.push({ c })
+        } else {
+          chars.push({ c, s: 'light' })
+        }
+      })
+      return { chars, styles: 'space' }
+    })
+  }, [voice])
+
+  if (!voice) {
+    return null
+  }
+
+  return (
+    <div className={cx('word-voice')}>
+      {voiceChars.map(({ chars, styles }: any, i: any) => (
+        <span className={cx('voice-text', styles)} key={i}>
+          {chars.map(({ c, s }: any, j: number) => (
+            <span className={cx('voice-text', s)} key={j}>
+              {c}
+            </span>
+          ))}
+        </span>
+      ))}
+    </div>
+  )
+}
+
+export const WordProcess: React.FC<any> = (props) => {
+  const { idx, max } = props
+  const [showTips] = useModal((mProps: any) => (
+    <TipsModal {...mProps}>
+      <div>
+        This is a tips for test tips modal
+        <br />
+        test
+        <br />
+        test
+        <br />
+        test
+        <br />
+        test
+        <br />
+        test
+        <br />
+        test
+        <br />
+        test
+      </div>
+    </TipsModal>
+  ))
+  return (
+    <div className={cx('word-process')}>
+      <div className={cx('word-tips')} onClick={showTips}>
+        Tips
+      </div>
+      <div className={cx('word-num')}>
+        {idx + 1}/{max}
+      </div>
+    </div>
+  )
+}
+
 export const WordCardPage: React.FC<IWordCardPageProps> = (props: any) => {
   const search = useLocationSearch()
   const [words, setWords] = React.useState([])
@@ -79,16 +158,19 @@ export const WordCardPage: React.FC<IWordCardPageProps> = (props: any) => {
   const [idx, onChangeCard] = useCircularCounter(words.length)
   const audioRef = React.useRef<HTMLAudioElement>()
   const word = words[idx] || {}
+  const [played, setPlayed] = React.useState(false)
   usePageProps({ showFooter: false })
 
   const onConfirm = () => {
     if (audioRef.current) {
-      audioRef.current.play()
+      audioRef.current.play().then(() => {
+        setPlayed(true)
+      })
     }
   }
 
-  const [showConfirm, closeConfirm] = useModalState((mProps: any) => (
-    <ConfirmModal {...asModalProps(mProps)} onConfirm={onConfirm}>
+  const [showConfirm, closeConfirm] = useModal((mProps: any) => (
+    <ConfirmModal {...mProps} onConfirm={onConfirm}>
       <div>Please confirm for play audio.</div>
     </ConfirmModal>
   ))
@@ -131,18 +213,16 @@ export const WordCardPage: React.FC<IWordCardPageProps> = (props: any) => {
 
   React.useEffect(() => {
     if (idx !== -1 && audioRef.current) {
-      //   const url = `http://translate.google.cn/translate_a/single?client=gtx&dt=t&dj=1&ie
-      // =UTF-8&sl=auto&tl=zh_CN&q=${word.chars}`
-      //   jsonp(url, null, (err, data) => {
-      //     if (err) {
-      //         console.log(err)
-      //     } else {
-      //         console.log(data)
-      //     }
-      // })
-      audioRef.current.play().catch((e) => {
-        showConfirm()
-      })
+      audioRef.current
+        .play()
+        .catch((e) => {
+          if (!played) {
+            showConfirm()
+          }
+        })
+        .then(() => {
+          setPlayed(true)
+        })
     }
   }, [idx, word])
 
@@ -154,12 +234,10 @@ export const WordCardPage: React.FC<IWordCardPageProps> = (props: any) => {
 
   return (
     <section className={cx('word-card-page')}>
-      <div className={cx('word-num')}>
-        {idx + 1}/{words.length}
-      </div>
+      <WordProcess idx={idx} max={words.length} />
       <div className={cx('word-text')} onClick={onPlayAudio}>
         <div>{word.chars}</div>
-        <div className={cx('word-voice')}>{word.voice}</div>
+        <WordVoiceText voice={word.voice} />
         {trans && <div className={cx('word-trans')}>{trans}</div>}
       </div>
       {word.en && <div className={cx('meaning-en')}>{word.en}</div>}

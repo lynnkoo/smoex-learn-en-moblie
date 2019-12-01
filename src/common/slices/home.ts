@@ -5,7 +5,7 @@ import {
   useScopedAction,
   injectReducers,
   createSlice,
-} from 'shared/redux-async-kit'
+} from 'redux-async-kit'
 
 const SLICE_NAME = 'home'
 

@@ -1,6 +1,5 @@
 import * as React from 'react'
 import styles from './styles/HomePage.module.scss'
-import { AppContext } from 'shared/react-dom-basic-kit'
 import { transformStyles } from 'shared/react-dom-basic-kit/utils'
 import { Link } from 'react-router-dom'
 import { accountAsyncAction } from '../../shared/smoex-frontend-basic/logics/account/actions'
@@ -9,6 +8,7 @@ import {
   FullScreenModal,
   MessageModal,
 } from 'shared/smoex-moblie-basic/components/FullScreenModal'
+import { useToggleToast } from 'shared/react-dom-basic-kit'
 const cx = transformStyles(styles)
 
 // name = Home
@@ -27,17 +27,13 @@ export const HomePage: React.FC = (props: any) => {
     updateInfo(count)
   }, [count])
   const [visible, setVisible] = React.useState(true)
-  const { showModal, closeModal } = React.useContext(AppContext)
-  const onToggleModal = () => {
-    showModal(FullScreenModal, {
-      children: (
-        <div>
-          <div onClick={closeModal}>CLOSE CLOSE</div>
-          <div onClick={() => showModal(MessageModal, {})}>SHOWMODAL</div>
-        </div>
-      ),
-    })
+
+  const toggleToast = useToggleToast(`testsdfafasd asdsa das dadsa asd asd asd`)
+  const toggle = () => {
+    toggleToast()
+    setCount((x) => x * x)
   }
+
   return (
     <section className={cx('home-page')}>
       <div>{account.name} </div>
@@ -53,6 +49,9 @@ export const HomePage: React.FC = (props: any) => {
       <br />
       <br />
       <Link to="/word">TO WORDS</Link>
+      <br />
+      <br />
+      <div onClick={toggle}>TEST TOAST</div>
     </section>
   )
 }

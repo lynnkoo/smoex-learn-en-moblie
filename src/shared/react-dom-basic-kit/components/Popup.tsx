@@ -50,17 +50,23 @@ const PopupComponent = (props: any) => {
 export type IPopupProps = {
   isOpen: boolean
   onClose: () => void
+  onRemove: () => void
 }
 
 export const enhancePopupComponent = (
   WrappedComponent: any,
   layerClassName?: string,
 ) => (props: any): any => {
+  const { isOpen } = props
   const [removed, setRemoved] = React.useState(false)
-  const onRemove = () => {
-    setRemoved(true)
-    props.onRemove()
-  }
+  const shown = usePopupShown(isOpen)
+  const onRemove = React.useCallback(() => {
+    if (!shown) {
+      setRemoved(true)
+      props.onRemove()
+    }
+  }, [shown])
+
   return (
     !removed && (
       <PopupComponent className={layerClassName}>
@@ -86,4 +92,30 @@ export function usePopupShown(isOpen: boolean = true) {
     }
   }, [])
   return shown
+}
+
+export function usePopupLayerOverlay(shown: boolean, onRemove?: any) {
+  const [overlay, setOverlay] = React.useState(true)
+  React.useEffect(() => {
+    if (!onRemove) {
+      setOverlay(shown)
+    }
+  }, [shown])
+
+  React.useEffect(() => {
+    const popupLayerNode = document.getElementById('PopupLayer')
+    if (popupLayerNode) {
+      if (overlay) {
+        popupLayerNode.style.zIndex = '2'
+      } else {
+        popupLayerNode.style.zIndex = null
+      }
+    }
+  }, [overlay])
+  return React.useCallback(() => {
+    if (!shown && onRemove) {
+      onRemove()
+      setOverlay(false)
+    }
+  }, [shown])
 }

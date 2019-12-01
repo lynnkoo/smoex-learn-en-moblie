@@ -3,19 +3,40 @@ import styles from './styles/Modal.module.scss'
 import {
   enhancePopupComponent,
   usePopupShown,
-} from 'shared/react-dom-basic-kit/components/Popup'
+} from 'shared/react-dom-basic-kit/components'
 import { transformStyles } from 'shared/react-dom-basic-kit/utils'
+import { DrawerModal } from './DrawerModal'
+import { asModalProps } from 'shared/react-dom-basic-kit'
+import { ShadowModal } from './ShadowModal'
 
 const cx = transformStyles(styles)
 
-const TConfirmModal: React.FC<any> = (props: any) => {
+// const TConfirmModal: React.FC<any> = (props: any) => {
+//   const { isOpen, onClose, onRemove, onConfirm } = props
+//   const shown = usePopupShown(isOpen)
+//   const onConfirmClick = () => {
+//     if (onConfirm) {
+//       onConfirm()
+//     }
+//     onClose()
+//   }
+//   return (
+//     <div
+//       className={cx('confirm-modal', { shown })}
+//       onTransitionEnd={onRemove}
+//     >
+//       {/* <div onClick={() => onClose()}>{` `}</div> */}
+//       {props.children}
+//       <div className={cx('confirm-btn')} onClick={onConfirmClick}>
+//         CONFIRM
+//       </div>
+//     </div>
+//   )
+// }
+
+export const TConfirmModal: React.FC<any> = (props) => {
   const { isOpen, onClose, onRemove, onConfirm } = props
   const shown = usePopupShown(isOpen)
-  const onTransitionEnd = React.useCallback(() => {
-    if (!shown) {
-      onRemove()
-    }
-  }, [shown])
   const onConfirmClick = () => {
     if (onConfirm) {
       onConfirm()
@@ -23,16 +44,15 @@ const TConfirmModal: React.FC<any> = (props: any) => {
     onClose()
   }
   return (
-    <div
-      className={cx('confirm-modal', { shown })}
-      onTransitionEnd={onTransitionEnd}
-    >
-      {/* <div onClick={() => onClose()}>{` `}</div> */}
-      {props.children}
-      <div className={cx('confirm-btn')} onClick={onConfirmClick}>
-        CONFIRM
+    <ShadowModal {...asModalProps(props)}>
+      <div className={cx('confirm-modal', { shown })}>
+        {/* <div onClick={() => onClose()}>{` `}</div> */}
+        {props.children}
+        <div className={cx('confirm-btn')} onClick={onConfirmClick}>
+          CONFIRM
+        </div>
       </div>
-    </div>
+    </ShadowModal>
   )
 }
 export const ConfirmModal = enhancePopupComponent(TConfirmModal)

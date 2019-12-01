@@ -1,14 +1,19 @@
 import * as React from 'react'
 import { FullScreenModal } from '../components/FullScreenModal'
 import styles from './styles/LoginModal.module.scss'
-import { asModalProps } from 'shared/react-dom-basic-kit'
+import {
+  asModalProps,
+  useModal,
+  useToggleToast,
+} from 'shared/react-dom-basic-kit'
 import { useFormState } from 'shared/react-dom-basic-kit/components/Form'
 import { transformStyles } from 'shared/react-dom-basic-kit/utils'
 import { enhanceFormComponent } from 'shared/react-dom-basic-kit/components/Form'
-import {} from 'shared/redux-async-kit'
+import {} from 'redux-async-kit'
 import { accountAsyncAction } from 'shared/smoex-frontend-basic/logics/account/actions'
 import { LoginForm } from './LoginForm'
 import { RegisterForm } from './RegisterForm'
+import { ConfirmModal } from '../components/ConfirmModal'
 
 const cx = transformStyles(styles)
 
@@ -35,12 +40,14 @@ export const LoginFormInput: React.FC<any> = (props) => {
 }
 
 export const LoginModal: React.FC<any> = (props) => {
-  const { setOverlay } = props
   const [form, translateForm] = React.useState('login')
   const onCloseModal = () => {
-    setOverlay(true)
     props.onClose()
   }
+  const [showConfirm] = useModal((mProps: any) => (
+    <ConfirmModal {...mProps}>{`test`}</ConfirmModal>
+  ))
+  const toggleToast = useToggleToast('test')
   return (
     <FullScreenModal {...asModalProps(props)} onClose={onCloseModal}>
       <div className={cx('login-modal')}>
@@ -52,6 +59,10 @@ export const LoginModal: React.FC<any> = (props) => {
           />
         )}
         {form === 'register' && <RegisterForm translateForm={translateForm} />}
+        <br />
+        <div onClick={showConfirm}>TEST CONFIRM</div>
+        <br />
+        <div onClick={toggleToast}>TEST TOAST</div>
       </div>
     </FullScreenModal>
   )
