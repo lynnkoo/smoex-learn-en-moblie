@@ -8,6 +8,8 @@ import {
 } from 'redux'
 import { asyncMiddleware } from './async'
 import { formatReducers } from './injector'
+import { composeWithDevTools } from 'redux-devtools-extension'
+import loggerMiddleware from 'redux-logger'
 
 type StoreInstance = Store & {
   asyncReducers: any
@@ -15,10 +17,14 @@ type StoreInstance = Store & {
 
 export let storeInstance: StoreInstance | undefined
 
+function createDefaultMiddleware() {
+  return [asyncMiddleware, composeWithDevTools, loggerMiddleware]
+}
+
 export function configureStore(configure: any = {}, initialState = {}) {
   const { epics, middlewares = [], reducers = {}, injector } = configure
   // configure middlewares
-  const defaultMiddlewares: any[] = [asyncMiddleware]
+  const defaultMiddlewares: any[] = createDefaultMiddleware()
   const asyncReducers: any = formatReducers(reducers)
   const runEpics = epics && epics.length > 0
   const epicMiddleware = createEpicMiddleware()

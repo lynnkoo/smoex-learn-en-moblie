@@ -1,4 +1,4 @@
-import { createSlice } from 'redux-async-kit'
+import { createSlice } from 'shared/redux-async-kit'
 import { accountReducer } from './logics'
 
 export const commonSlice = createSlice('common', {

@@ -4,13 +4,13 @@ a bi li ty
 a ble
 a bor tion
 a bout
-a bo ve
+a bove
 a broad
-ab sen ce
-ab so lu te
+ab sence
+ab so lute
 ab so lu te ly
 ab stract
-a bu se
+a buse
 a ca de mic
 ac cept
 ac cep ta ble
@@ -123,13 +123,13 @@ an swer
 an ti ci pa te
 an xie ty
 an xious
-any
-any bo dy
-any more
-any one
-any thing
-any way
-any whe re
+a ny
+a ny bo dy
+a ny more
+a ny one
+a ny thing
+a ny way
+a ny whe re
 a part
 a part ment
 a po lo gi ze
@@ -152,7 +152,7 @@ ar chi tec ture
 a rea
 ar gue
 ar gu ment
-a ri se
+a rise
 arm
 ar my
 a round
@@ -166,7 +166,7 @@ ar ti cle
 ar tist
 as
 a sham ed
-a si de
+a side
 ask
 a ssess
 a ssess ment
@@ -271,7 +271,7 @@ birth
 bit
 bite
 black
-blame
+bla me
 bless
 blind
 block
@@ -297,7 +297,7 @@ both
 bo ther
 bo ttle
 bo ttom
-boun dary
+boun da ry
 bowl
 box
 boy
@@ -313,7 +313,7 @@ brea the
 breed
 bri dge
 brief
-brie fly
+brief ly
 bright
 bri lliant
 bring
@@ -338,7 +338,7 @@ buy
 buy er
 by
 ca ble
-ca ke
+cake
 cal cu late
 call
 calm
@@ -359,18 +359,18 @@ car bon
 card
 care
 ca reer
-ca re ful
-ca re ful ly
+care ful
+care ful ly
 car pet
 ca rry
 case
 cash
 cast
-ca stle
+castle
 cat
 ca ta log
-ca tch
-ca te gory
+catch
+ca te go ry
 cause
 ce le brate
 ce le bra tion
@@ -378,8 +378,8 @@ cell
 cent
 cen ter
 cen tral
-cen tury
-ce re mony
+cen tu ry
+ce re mo ny
 cer tain
 cer tain ly
 chain
@@ -389,14 +389,14 @@ cha llen ge
 cham ber
 cham pion
 cham pion ship
-chan ce
-chan ge
+chance
+change
 cha nnel
 chap ter
 cha ra cter
 cha ra cte ris tic
 cha ra cte rize
-char ge
+charge
 cha ri ty
 charm
 chart
@@ -406,67 +406,67 @@ cheap
 check
 cheek
 cheese
-chemical
+che mi cal
 chest
-chicken
+chi cken
 chief
 child
-childhood
+child hood
 chip
-chocolate
+cho co late
 choice
 choose
 church
-cigarette
-circle
-circumstance
+ci ga rette
+cir cle
+cir cum stance
 cite
-citizen
-city
-civil
-civilian
+ci ti zen
+ci ty
+ci vil
+ci vi lian
 claim
 class
-classic
-classical
+cla ssic
+cla ssi cal
 clause
 clean
 clear
-clearly
-climate
+clear ly
+cli mate
 climb
-clinical
+cli ni cal
 clock
 close
-closely
-clothes
-clothing
+close ly
+clo thes
+clo thing
 cloud
 club
-cluster
+clu ster
 coach
 coal
 coast
 coat
 code
-coffee
+co ffee
 coin
 cold
-collapse
-colleague
-collect
-collection
-college
-color
-column
-combination
-combine
+co llapse
+co llea gue
+co llect
+co llec tion
+co llege
+co lor
+co lumn
+com bi na tion
+com bine
 come
-comedy
-comfort
-comfortable
-command
-comment
+co me dy
+com fort
+com for table
+com mand
+com ment
 commercial
 commission
 commit

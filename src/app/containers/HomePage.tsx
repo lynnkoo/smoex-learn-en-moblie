@@ -1,7 +1,7 @@
 import * as React from 'react'
 import styles from './styles/HomePage.module.scss'
 import { transformStyles } from 'shared/react-dom-basic-kit/utils'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { accountAsyncAction } from '../../shared/smoex-frontend-basic/logics/account/actions'
 import { homeSlice } from 'common/slices/home'
 import {
@@ -27,6 +27,7 @@ export const HomePage: React.FC = (props: any) => {
     updateInfo(count)
   }, [count])
   const [visible, setVisible] = React.useState(true)
+  const location = useLocation()
 
   const toggleToast = useToggleToast(`testsdfafasd asdsa das dadsa asd asd asd`)
   const toggle = () => {

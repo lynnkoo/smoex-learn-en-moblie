@@ -2,21 +2,21 @@ import * as React from 'react'
 import styles from './styles/App.module.scss'
 import { transformStyles } from 'shared/react-dom-basic-kit/utils'
 import { updateOffsetTop } from '../components/DrawerModal'
+import { useDefaultPageProps } from 'shared/smoex-moblie-basic/containers/PageRouter'
 const cx = transformStyles(styles)
 
 export const Install: React.FC<any> = (props) => {
-  const [visible, setVisible] = React.useState(true)
   const installRef = React.useRef<HTMLDivElement>()
+  const setPageProps = useDefaultPageProps()
   const onClose = () => {
-    setVisible(false)
+    setPageProps({ showInstall: false })
+    // 重新 render 组件有延迟，这里提前设置 modal 到正确到位置
     updateOffsetTop(installRef.current)
   }
   return (
-    visible && (
-      <div className={cx('install')} ref={installRef}>
-        <div onClick={onClose}>X</div>
-        <div>open app</div>
-      </div>
-    )
+    <div className={cx('install')} ref={installRef}>
+      <div onClick={onClose}>X</div>
+      <div>open app</div>
+    </div>
   )
 }

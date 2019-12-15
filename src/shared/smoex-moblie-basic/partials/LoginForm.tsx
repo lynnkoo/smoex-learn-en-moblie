@@ -5,15 +5,15 @@ import { asModalProps, useToggleToast } from 'shared/react-dom-basic-kit'
 import { useFormState } from 'shared/react-dom-basic-kit/components/Form'
 import { transformStyles } from 'shared/react-dom-basic-kit/utils'
 import { enhanceFormComponent } from 'shared/react-dom-basic-kit/components/Form'
-import { useActionCallback } from 'redux-async-kit'
+import { useActionCallback } from 'shared/redux-async-kit'
 import { accountAsyncAction } from 'shared/smoex-frontend-basic/logics/account/actions'
 import { LoginFormInput } from '././LoginModal'
 import { commonSlice } from 'shared/smoex-frontend-basic'
 
 const cx = transformStyles(styles)
 
-function useErrorToast(error: any) {
-  const toggleToast = useToggleToast(error && error.info)
+export function useErrorToast(error: any) {
+  const toggleToast = useToggleToast(error && (error.info || error.message))
   React.useEffect(() => {
     if (error) {
       toggleToast()
@@ -25,24 +25,36 @@ const TLoginForm: React.FC<any> = (props) => {
   const { translateForm, onCloseModal } = props
   const [data, setData] = useFormState()
   const [loginType, setLoginType] = React.useState('password')
-  // const [loading, setLoading] = React.useState(false);
 
   const [login, LoginLoading] = commonSlice.useAction(accountAsyncAction.login)
-  const [update, updateLoading] = commonSlice.useAction(
-    accountAsyncAction.getInfo,
+  const [sendCode, sendLoading] = commonSlice.useAction(
+    accountAsyncAction.sendCode,
   )
-  const loading = LoginLoading || updateLoading
+  const [verify, verifyLoading] = commonSlice.useAction(
+    accountAsyncAction.verifyCode,
+  )
+  const loading = LoginLoading || sendLoading
 
-  const [onLogin, error] = useActionCallback(async () => {
-    const { account, password } = data
-    await login(account, password)
+  const [onLogin, loginError] = useActionCallback(async () => {
+    const { account, password, code } = data
+    if (loginType === 'password') {
+      await login(account, password)
+    } else if (loginType === 'code') {
+      await verify(code, 'login')
+    }
     onCloseModal()
-  }, [login, data])
+  }, [login, data, loginType, verify])
 
-  useErrorToast(error)
+  const [onSendCode, sendCodeError] = useActionCallback(async () => {
+    const { account } = data
+    await sendCode(account, 'login')
+  }, [sendCode, data])
+
+  useErrorToast(loginError)
+  useErrorToast(sendCodeError)
 
   React.useEffect(() => {
-    setData({ password: '', verifyCode: '' })
+    setData({ password: '', code: '' })
   }, [loginType])
 
   const onChangeType = () => {
@@ -54,25 +66,27 @@ const TLoginForm: React.FC<any> = (props) => {
       <div className={cx('login-label')}>
         PHONE{loginType === 'password' && '/USERNAME'}
       </div>
-      <LoginFormInput name="account" />
+      <LoginFormInput name="account" defaultValue="lynnkoo" />
       <div className={cx('login-label')}>
         {loginType === 'password' ? 'PASSWORD' : 'VERIFY CODE'}
       </div>
       {loginType === 'password' && (
-        <LoginFormInput name="password">
+        <LoginFormInput name="password" defaultValue="111111">
           <div className={cx('login-send-code')}>FORGET PASSWORD</div>
         </LoginFormInput>
       )}
       {loginType === 'code' && (
-        <LoginFormInput name="verifyCode">
-          <div className={cx('login-send-code')}>SEND CODE</div>
+        <LoginFormInput name="code">
+          <div className={cx('login-send-code')} onClick={onSendCode}>
+            SEND CODE
+          </div>
         </LoginFormInput>
       )}
       <div className={cx('login-change-type')} onClick={onChangeType}>
         LOGIN BY {loginType !== 'password' ? 'PASSWORD' : 'VERIFY CODE'}
       </div>
       <div className={cx('login-form-btn', { loading })} onClick={onLogin}>
-        LOGIN{loading && '...'}
+        LOGIN{(LoginLoading || verifyLoading) && '...'}
       </div>
       <div
         className={cx('login-form-btn')}

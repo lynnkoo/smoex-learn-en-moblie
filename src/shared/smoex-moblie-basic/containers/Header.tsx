@@ -5,15 +5,13 @@ import { transformStyles } from 'shared/react-dom-basic-kit/utils'
 import { useToggleModal, asModalProps } from 'shared/react-dom-basic-kit'
 import { NavLink } from 'react-router-dom'
 import { MenuModal } from './MenuModal'
+import { usePageProps } from 'shared/smoex-moblie-basic/containers/PageRouter'
 
 const cx = transformStyles(styles)
 
 export const Header: React.FC<any> = (props) => {
-  const toggleModal = useToggleModal(MenuModal)
-
-  const onToggleModal = () => {
-    toggleModal()
-  }
+  const { showInstall } = usePageProps()
+  const toggleModal = useToggleModal(MenuModal, [showInstall])
 
   return (
     <header id="Header" className={cx('header')}>
@@ -26,7 +24,7 @@ export const Header: React.FC<any> = (props) => {
         >
           LOGO
         </NavLink>
-        <div className={cx('header-menu')} onClick={onToggleModal}>
+        <div className={cx('header-menu')} onClick={toggleModal}>
           MENU
         </div>
       </div>

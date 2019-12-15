@@ -1,17 +1,19 @@
 import * as React from 'react'
+import 'shared/smoex-frontend-basic/styles/index.scss'
 import { Route } from 'react-router-dom'
-import { configureStore } from 'redux-async-kit'
+import { configureStore } from 'shared/redux-async-kit'
 import { Container } from 'shared/react-dom-basic-kit'
 import { PageRouter } from 'shared/smoex-moblie-basic/containers/PageRouter'
 import { commonSlice } from 'shared/smoex-frontend-basic'
 import { Provider } from 'react-redux'
-import 'shared/smoex-frontend-basic/styles/index.scss'
 import { homeSlice } from 'common/slices/home'
-import { createLazyComponent } from 'redux-async-kit'
+import { createLazyComponent } from 'shared/redux-async-kit'
 import { PageLoading } from 'shared/smoex-moblie-basic/containers/PageLoading'
+import { commonReducer } from '../shared/smoex-frontend-basic/logics/index'
 
 const store = configureStore({
   injector: commonSlice.injector,
+  reducers: commonReducer,
 })
 
 window['store'] = store

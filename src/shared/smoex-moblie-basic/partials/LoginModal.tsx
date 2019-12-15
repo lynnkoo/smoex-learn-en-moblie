@@ -8,9 +8,6 @@ import {
 } from 'shared/react-dom-basic-kit'
 import { useFormState } from 'shared/react-dom-basic-kit/components/Form'
 import { transformStyles } from 'shared/react-dom-basic-kit/utils'
-import { enhanceFormComponent } from 'shared/react-dom-basic-kit/components/Form'
-import {} from 'redux-async-kit'
-import { accountAsyncAction } from 'shared/smoex-frontend-basic/logics/account/actions'
 import { LoginForm } from './LoginForm'
 import { RegisterForm } from './RegisterForm'
 import { ConfirmModal } from '../components/ConfirmModal'
@@ -18,7 +15,7 @@ import { ConfirmModal } from '../components/ConfirmModal'
 const cx = transformStyles(styles)
 
 export const LoginFormInput: React.FC<any> = (props) => {
-  const { name, children } = props
+  const { name, children, defaultValue } = props
   const [data, setData] = useFormState()
   const onChange = React.useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -27,6 +24,18 @@ export const LoginFormInput: React.FC<any> = (props) => {
     },
     [name],
   )
+  React.useEffect(() => {
+    if (defaultValue) {
+      if (name === 'password') {
+        setTimeout(() => {
+          setData({ [name]: defaultValue })
+        }, 10)
+      } else {
+        setData({ [name]: defaultValue })
+      }
+    }
+  }, [])
+
   return (
     <div className={cx('login-input-wrapper')}>
       <input
@@ -58,7 +67,12 @@ export const LoginModal: React.FC<any> = (props) => {
             onCloseModal={onCloseModal}
           />
         )}
-        {form === 'register' && <RegisterForm translateForm={translateForm} />}
+        {form === 'register' && (
+          <RegisterForm
+            translateForm={translateForm}
+            onCloseModal={onCloseModal}
+          />
+        )}
         <br />
         <div onClick={showConfirm}>TEST CONFIRM</div>
         <br />
