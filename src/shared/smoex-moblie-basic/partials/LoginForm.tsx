@@ -27,12 +27,8 @@ const TLoginForm: React.FC<any> = (props) => {
   const [loginType, setLoginType] = React.useState('password')
 
   const [login, LoginLoading] = commonSlice.useAction(accountAsyncAction.login)
-  const [sendCode, sendLoading] = commonSlice.useAction(
-    accountAsyncAction.sendCode,
-  )
-  const [verify, verifyLoading] = commonSlice.useAction(
-    accountAsyncAction.verifyCode,
-  )
+  const [sendCode, sendLoading] = commonSlice.useAction(accountAsyncAction.sendCode)
+  const [verify, verifyLoading] = commonSlice.useAction(accountAsyncAction.verifyCode)
   const loading = LoginLoading || sendLoading
 
   const [onLogin, loginError] = useActionCallback(async () => {
@@ -63,9 +59,7 @@ const TLoginForm: React.FC<any> = (props) => {
 
   return (
     <form className={cx('login-form')}>
-      <div className={cx('login-label')}>
-        PHONE{loginType === 'password' && '/USERNAME'}
-      </div>
+      <div className={cx('login-label')}>PHONE{loginType === 'password' && '/USERNAME'}</div>
       <LoginFormInput name="account" defaultValue="lynnkoo" />
       <div className={cx('login-label')}>
         {loginType === 'password' ? 'PASSWORD' : 'VERIFY CODE'}
@@ -88,10 +82,7 @@ const TLoginForm: React.FC<any> = (props) => {
       <div className={cx('login-form-btn', { loading })} onClick={onLogin}>
         LOGIN{(LoginLoading || verifyLoading) && '...'}
       </div>
-      <div
-        className={cx('login-form-btn')}
-        onClick={() => translateForm('register')}
-      >
+      <div className={cx('login-form-btn')} onClick={() => translateForm('register')}>
         REGISTER
       </div>
     </form>

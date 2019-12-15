@@ -21,11 +21,7 @@ export const WordPage: React.FC<IWordPageProps> = (props: any) => {
   return (
     <section className={cx('word-page')}>
       {books.map((book, i) => (
-        <Link
-          className={cx('word-book')}
-          key={i}
-          to={`/word/card?book=${book}`}
-        >
+        <Link className={cx('word-book')} key={i} to={`/word/card?book=${book}`}>
           {book}
           <div className={cx('word-progress')}>{getPage(book)}</div>
         </Link>

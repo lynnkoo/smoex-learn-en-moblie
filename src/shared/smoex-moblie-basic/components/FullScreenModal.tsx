@@ -15,10 +15,7 @@ const TFullScreenModal: React.FC<any> = (props: any) => {
   usePopupLayerOverlay(shown)
 
   return (
-    <div
-      className={cx('full-screen-modal', { shown })}
-      onTransitionEnd={onRemove}
-    >
+    <div className={cx('full-screen-modal', { shown })} onTransitionEnd={onRemove}>
       <div className={cx('full-screen-header')} onClick={() => onClose()}>
         X
       </div>

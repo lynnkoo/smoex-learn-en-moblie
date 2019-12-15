@@ -25,8 +25,7 @@ const HomePage = createLazyComponent({
 
 const SearchPage = createLazyComponent({
   injector: homeSlice.injector,
-  loader: () =>
-    import('./containers/SearchPage' /* webpackChunkName: "search" */),
+  loader: () => import('./containers/SearchPage' /* webpackChunkName: "search" */),
 })
 
 const WordPage = createLazyComponent({
@@ -36,14 +35,12 @@ const WordPage = createLazyComponent({
 
 const WordListPage = createLazyComponent({
   injector: homeSlice.injector,
-  loader: () =>
-    import('./containers/WordListPage' /* webpackChunkName: "word-list" */),
+  loader: () => import('./containers/WordListPage' /* webpackChunkName: "word-list" */),
 })
 
 const WordCardPage = createLazyComponent({
   injector: homeSlice.injector,
-  loader: () =>
-    import('./containers/WordCardPage' /* webpackChunkName: "word-card" */),
+  loader: () => import('./containers/WordCardPage' /* webpackChunkName: "word-card" */),
 })
 
 export const App: React.FC = () => {

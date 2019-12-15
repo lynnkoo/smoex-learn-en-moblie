@@ -53,10 +53,9 @@ export type IPopupProps = {
   onRemove: () => void
 }
 
-export const enhancePopupComponent = (
-  WrappedComponent: any,
-  layerClassName?: string,
-) => (props: any): any => {
+export const enhancePopupComponent = (WrappedComponent: any, layerClassName?: string) => (
+  props: any,
+): any => {
   const { isOpen } = props
   const [removed, setRemoved] = React.useState(false)
   const shown = usePopupShown(isOpen)

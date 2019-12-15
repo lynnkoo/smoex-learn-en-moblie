@@ -85,8 +85,7 @@ export const PageRouter: React.FC<any> = (props) => {
   const loading = useInitLoading()
   const { pathname } = useLocation()
   const [pageContext, setPageContext] = React.useState<any>({
-    setPageProps: (pageProps: any) =>
-      setPageProps((mProps) => ({ ...mProps, ...pageProps })),
+    setPageProps: (pageProps: any) => setPageProps((mProps) => ({ ...mProps, ...pageProps })),
     pageProps: DEFALUT_PAGE_PROPS,
   })
   React.useEffect(() => {

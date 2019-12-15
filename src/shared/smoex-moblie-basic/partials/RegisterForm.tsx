@@ -1,19 +1,11 @@
 import * as React from 'react'
 import { FullScreenModal } from '../components/FullScreenModal'
 import styles from './styles/LoginModal.module.scss'
-import {
-  asModalProps,
-  useToggleToast,
-  useModal,
-} from 'shared/react-dom-basic-kit'
+import { asModalProps, useToggleToast, useModal } from 'shared/react-dom-basic-kit'
 import { useFormState } from 'shared/react-dom-basic-kit/components/Form'
 import { transformStyles } from 'shared/react-dom-basic-kit/utils'
 import { enhanceFormComponent } from 'shared/react-dom-basic-kit/components/Form'
-import {
-  useActionCallback,
-  useAsyncCallback,
-  useCurrentCallback,
-} from 'shared/redux-async-kit'
+import { useActionCallback, useAsyncCallback, useCurrentCallback } from 'shared/redux-async-kit'
 import { accountAsyncAction } from 'shared/smoex-frontend-basic/logics/account/actions'
 import { LoginFormInput } from './LoginModal'
 import { commonSlice } from 'shared/smoex-frontend-basic'
@@ -35,12 +27,8 @@ const TRegisterForm: React.FC<any> = (props) => {
     </ConfirmModal>
   ))
 
-  const [sendCode, sendLoading] = commonSlice.useAction(
-    accountAsyncAction.sendCode,
-  )
-  const [verify, verifyLoading] = commonSlice.useAction(
-    accountAsyncAction.verifyCode,
-  )
+  const [sendCode, sendLoading] = commonSlice.useAction(accountAsyncAction.sendCode)
+  const [verify, verifyLoading] = commonSlice.useAction(accountAsyncAction.verifyCode)
   const account = commonSlice.useSelector((state: any) => state.account.payload)
 
   const onRegistered = useCurrentCallback(() => {

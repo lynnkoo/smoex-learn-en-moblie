@@ -11,6 +11,5 @@ type IVerifyCodeParams = {
 
 export const securityAPI = {
   sendCode: (params: ISendCodeParams) => api.post('/security/sendcode', params),
-  verifyCode: (params: IVerifyCodeParams) =>
-    api.post('/security/verifycode', params),
+  verifyCode: (params: IVerifyCodeParams) => api.post('/security/verifycode', params),
 }

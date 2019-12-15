@@ -13,16 +13,10 @@ export const Controller = () => {
   return (
     <div className={cx('controller')}>
       <div className={cx('controller-wrapper')}>
-        <div
-          className={cx('controller-btn')}
-          onClick={() => window.history.back()}
-        >
+        <div className={cx('controller-btn')} onClick={() => window.history.back()}>
           {`<`}
         </div>
-        <div
-          className={cx('controller-btn')}
-          onClick={() => window.history.forward()}
-        >
+        <div className={cx('controller-btn')} onClick={() => window.history.forward()}>
           {`>`}
         </div>
       </div>

@@ -4,10 +4,7 @@ import { transformStyles } from 'shared/react-dom-basic-kit/utils'
 import { Link, useLocation } from 'react-router-dom'
 import { accountAsyncAction } from '../../shared/smoex-frontend-basic/logics/account/actions'
 import { homeSlice } from 'common/slices/home'
-import {
-  FullScreenModal,
-  MessageModal,
-} from 'shared/smoex-moblie-basic/components/FullScreenModal'
+import { FullScreenModal, MessageModal } from 'shared/smoex-moblie-basic/components/FullScreenModal'
 import { useToggleToast } from 'shared/react-dom-basic-kit'
 const cx = transformStyles(styles)
 
@@ -18,9 +15,7 @@ type IHomePageProps = {
 
 export const HomePage: React.FC = (props: any) => {
   const { className } = props
-  const [updateInfo, loading, error] = homeSlice.useAction(
-    accountAsyncAction.getInfo,
-  )
+  const [updateInfo, loading, error] = homeSlice.useAction(accountAsyncAction.getInfo)
   const account = homeSlice.useSelector((home: any) => home.account)
   const [count, setCount] = React.useState(0)
   const onUpdateInfo = React.useCallback(() => {

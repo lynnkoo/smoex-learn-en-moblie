@@ -1,11 +1,5 @@
 import { createEpicMiddleware } from 'redux-observable'
-import {
-  compose,
-  applyMiddleware,
-  createStore,
-  combineReducers,
-  Store,
-} from 'redux'
+import { compose, applyMiddleware, createStore, combineReducers, Store } from 'redux'
 import { asyncMiddleware } from './async'
 import { formatReducers } from './injector'
 import { composeWithDevTools } from 'redux-devtools-extension'

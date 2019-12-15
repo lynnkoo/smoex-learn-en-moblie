@@ -1,10 +1,6 @@
 import { accountReducer } from '../../shared/smoex-frontend-basic/logics'
 import { Loading } from 'shared/smoex-moblie-basic/components/Loading'
-import {
-  useScopedSelector,
-  useScopedAction,
-  injectReducers,
-} from 'shared/redux-async-kit'
+import { useScopedSelector, useScopedAction, injectReducers } from 'shared/redux-async-kit'
 
 const SLICE_NAME = 'search'
 
