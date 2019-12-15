@@ -17,7 +17,7 @@ export function useToggleToast(text?: string) {
   const { toggleToast } = React.useContext(AppContext)
   return React.useCallback(
     (msg?: any) => {
-      toggleToast(msg || text)
+      toggleToast(typeof msg === 'string' ? msg : text)
     },
     [text],
   )
