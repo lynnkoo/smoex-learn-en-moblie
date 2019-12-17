@@ -41,7 +41,7 @@ export const LoginFormInput: React.FC<any> = (props) => {
 }
 
 export const LoginModal: React.FC<any> = (props) => {
-  const [form, translateForm] = React.useState('login')
+  const [form, setForm] = React.useState('login')
   const onCloseModal = () => {
     props.onClose()
   }
@@ -52,10 +52,10 @@ export const LoginModal: React.FC<any> = (props) => {
       <div className={cx('login-modal')}>
         <div className={cx('login-modal-logo')}>SMOEX</div>
         {form === 'login' && (
-          <LoginForm translateForm={translateForm} onCloseModal={onCloseModal} />
+          <LoginForm toRegister={() => setForm('register')} callback={onCloseModal} />
         )}
         {form === 'register' && (
-          <RegisterForm translateForm={translateForm} onCloseModal={onCloseModal} />
+          <RegisterForm toLogin={() => setForm('login')} callback={onCloseModal} />
         )}
         <br />
         <div onClick={showConfirm}>TEST CONFIRM</div>

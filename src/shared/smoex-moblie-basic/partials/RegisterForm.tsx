@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { FullScreenModal } from '../components/FullScreenModal'
 import styles from './styles/LoginModal.module.scss'
-import { asModalProps, useToggleToast, useModal } from 'shared/react-dom-basic-kit'
+import { asModalProps, useToggleToast, useModal, useToastError } from 'shared/react-dom-basic-kit'
 import { useFormState } from 'shared/react-dom-basic-kit/components/Form'
 import { transformStyles } from 'shared/react-dom-basic-kit/utils'
 import { enhanceFormComponent } from 'shared/react-dom-basic-kit/components/Form'
@@ -9,13 +9,12 @@ import { useActionCallback, useAsyncCallback, useCurrentCallback } from 'shared/
 import { accountAsyncAction } from 'shared/smoex-frontend-basic/logics/account/actions'
 import { LoginFormInput } from './LoginModal'
 import { commonSlice } from 'shared/smoex-frontend-basic'
-import { useErrorToast } from './LoginForm'
 import { ConfirmModal } from '../components/ConfirmModal'
 
 const cx = transformStyles(styles)
 
 const TRegisterForm: React.FC<any> = (props) => {
-  const { translateForm, onCloseModal } = props
+  const { toLogin, callback } = props
   const [data] = useFormState()
 
   const toggleToast = useToggleToast()
@@ -34,7 +33,7 @@ const TRegisterForm: React.FC<any> = (props) => {
   const onRegistered = useCurrentCallback(() => {
     if (account.group === 'member') {
       toggleToast('already register so to login')
-      onCloseModal()
+      callback()
     } else {
       showConfirm()
     }
@@ -51,8 +50,8 @@ const TRegisterForm: React.FC<any> = (props) => {
     await sendCode(account, 'register')
   }, [sendCode, data])
 
-  useErrorToast(registerError)
-  useErrorToast(sendCodeError)
+  useToastError(registerError)
+  useToastError(sendCodeError)
   return (
     <form className={cx('login-form')}>
       <div className={cx('login-label')}>PHONE</div>
@@ -63,8 +62,8 @@ const TRegisterForm: React.FC<any> = (props) => {
           SEND CODE
         </div>
       </LoginFormInput>
-      <div className={cx('login-back')} onClick={() => translateForm('login')}>
-        Back
+      <div className={cx('login-back')} onClick={toLogin}>
+        Back To Login
       </div>
       <div className={cx('login-form-btn')} onClick={onRegister}>
         REGISTER{verifyLoading && '...'}

@@ -13,6 +13,15 @@ type IAppContainerProps = {
 
 export const AppContext = React.createContext<any>(null)
 
+export function useToastError(error: any) {
+  const toggleToast = useToggleToast(error && (error.info || error.message))
+  React.useEffect(() => {
+    if (error) {
+      toggleToast()
+    }
+  }, [error])
+}
+
 export function useToggleToast(text?: string) {
   const { toggleToast } = React.useContext(AppContext)
   return React.useCallback(

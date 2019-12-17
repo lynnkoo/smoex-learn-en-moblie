@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { FullScreenModal } from '../components/FullScreenModal'
 import styles from './styles/LoginModal.module.scss'
-import { asModalProps, useToggleToast } from 'shared/react-dom-basic-kit'
+import { asModalProps, useToggleToast, useToastError } from 'shared/react-dom-basic-kit'
 import { useFormState } from 'shared/react-dom-basic-kit/components/Form'
 import { transformStyles } from 'shared/react-dom-basic-kit/utils'
 import { enhanceFormComponent } from 'shared/react-dom-basic-kit/components/Form'
@@ -12,17 +12,8 @@ import { commonSlice } from 'shared/smoex-frontend-basic'
 
 const cx = transformStyles(styles)
 
-export function useErrorToast(error: any) {
-  const toggleToast = useToggleToast(error && (error.info || error.message))
-  React.useEffect(() => {
-    if (error) {
-      toggleToast()
-    }
-  }, [error])
-}
-
 const TLoginForm: React.FC<any> = (props) => {
-  const { translateForm, onCloseModal } = props
+  const { toRegister, callback } = props
   const [data, setData] = useFormState()
   const [loginType, setLoginType] = React.useState('password')
 
@@ -38,7 +29,9 @@ const TLoginForm: React.FC<any> = (props) => {
     } else if (loginType === 'code') {
       await verify(code, 'login')
     }
-    onCloseModal()
+    if (callback) {
+      callback()
+    }
   }, [login, data, loginType, verify])
 
   const [onSendCode, sendCodeError] = useActionCallback(async () => {
@@ -46,8 +39,8 @@ const TLoginForm: React.FC<any> = (props) => {
     await sendCode(account, 'login')
   }, [sendCode, data])
 
-  useErrorToast(loginError)
-  useErrorToast(sendCodeError)
+  useToastError(loginError)
+  useToastError(sendCodeError)
 
   React.useEffect(() => {
     setData({ password: '', code: '' })
@@ -82,7 +75,7 @@ const TLoginForm: React.FC<any> = (props) => {
       <div className={cx('login-form-btn', { loading })} onClick={onLogin}>
         LOGIN{(LoginLoading || verifyLoading) && '...'}
       </div>
-      <div className={cx('login-form-btn')} onClick={() => translateForm('register')}>
+      <div className={cx('login-form-btn')} onClick={toRegister}>
         REGISTER
       </div>
     </form>
