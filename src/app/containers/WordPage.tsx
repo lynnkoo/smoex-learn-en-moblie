@@ -1,7 +1,7 @@
 import * as React from 'react'
 
 import styles from './styles/WordPage.module.scss'
-import { transformStyles } from 'shared/react-dom-basic-kit/utils'
+import { transformStyles } from 'react-dom-basic-kit'
 import { Link } from 'react-router-dom'
 const cx = transformStyles(styles)
 

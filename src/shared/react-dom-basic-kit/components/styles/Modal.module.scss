@@ -1,0 +1,12 @@
+.modal {
+  bottom: 0;
+  position: absolute;
+  top: 0;
+  transition: background-color 0.3s;
+  width: 100%;
+  z-index: 5000;
+
+  &.shown {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+}

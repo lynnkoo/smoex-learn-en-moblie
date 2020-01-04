@@ -1,11 +1,11 @@
 import * as React from 'react'
 import styles from './styles/HomePage.module.scss'
-import { transformStyles } from 'shared/react-dom-basic-kit/utils'
+import { transformStyles } from 'react-dom-basic-kit'
 import { Link, useLocation } from 'react-router-dom'
 import { accountAsyncAction } from '../../shared/smoex-frontend-basic/logics/account/actions'
 import { homeSlice } from 'common/slices/home'
 import { FullScreenModal, MessageModal } from 'shared/smoex-moblie-basic/components/FullScreenModal'
-import { useToggleToast } from 'shared/react-dom-basic-kit'
+import { useToggleToast } from 'react-dom-basic-kit'
 const cx = transformStyles(styles)
 
 // name = Home

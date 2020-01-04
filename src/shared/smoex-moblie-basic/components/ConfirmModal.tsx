@@ -1,9 +1,9 @@
 import * as React from 'react'
 import styles from './styles/Modal.module.scss'
-import { enhancePopupComponent, usePopupShown } from 'shared/react-dom-basic-kit/components'
-import { transformStyles } from 'shared/react-dom-basic-kit/utils'
+import { enhancePopupComponent, usePopupShown } from 'react-dom-basic-kit'
+import { transformStyles } from 'react-dom-basic-kit'
 import { DrawerModal } from './DrawerModal'
-import { asModalProps } from 'shared/react-dom-basic-kit'
+import { asModalProps } from 'react-dom-basic-kit'
 import { ShadowModal } from './ShadowModal'
 
 const cx = transformStyles(styles)

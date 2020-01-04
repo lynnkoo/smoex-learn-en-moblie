@@ -1,8 +1,8 @@
 import * as React from 'react'
 import styles from './styles/App.module.scss'
-import { transformStyles } from 'shared/react-dom-basic-kit/utils'
+import { transformStyles } from 'react-dom-basic-kit'
 
-import { useToggleModal, asModalProps } from 'shared/react-dom-basic-kit'
+import { useToggleModal, asModalProps } from 'react-dom-basic-kit'
 import { NavLink } from 'react-router-dom'
 import { MenuModal } from './MenuModal'
 import { usePageProps } from 'shared/smoex-moblie-basic/containers/PageRouter'

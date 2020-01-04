@@ -1,8 +1,7 @@
 import * as React from 'react'
-import 'shared/smoex-frontend-basic/styles/index.scss'
 import { Route } from 'react-router-dom'
 import { configureStore } from 'shared/redux-async-kit'
-import { Container } from 'shared/react-dom-basic-kit'
+import { Container } from 'react-dom-basic-kit'
 import { PageRouter } from 'shared/smoex-moblie-basic/containers/PageRouter'
 import { commonSlice } from 'shared/smoex-frontend-basic'
 import { Provider } from 'react-redux'
@@ -43,7 +42,7 @@ const WordCardPage = createLazyComponent({
   loader: () => import('./containers/WordCardPage' /* webpackChunkName: "word-card" */),
 })
 
-export const App: React.FC = () => {
+const App: React.FC = () => {
   return (
     <Provider store={store}>
       <Container>
@@ -58,3 +57,5 @@ export const App: React.FC = () => {
     </Provider>
   )
 }
+
+export default App

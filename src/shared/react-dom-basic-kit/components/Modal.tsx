@@ -5,27 +5,27 @@ import {
   usePopupShown,
   IPopupProps,
   usePopupLayerOverlay,
-} from 'react-dom-basic-kit'
+} from '../components/Popup'
 
-import { transformStyles } from 'react-dom-basic-kit'
-import { cloneModalContent } from 'react-dom-basic-kit'
+import { transformStyles, cloneModalContent } from '../index'
 
 const cx = transformStyles(styles)
 
 type IDrawerModalProps = IPopupProps & {
   children: React.ReactElement
-  enableClose?: boolean
+  blankClose?: boolean
+  className?: string
 }
 
-const TShadowModal: React.FC<IDrawerModalProps> = (props) => {
-  const { isOpen, onClose, onRemove, enableClose, children } = props
+const TModal: React.FC<IDrawerModalProps> = (props) => {
+  const { isOpen, onClose, onRemove, blankClose, children, className } = props
   const shown = usePopupShown(isOpen)
   const onRemoveModal = usePopupLayerOverlay(shown, onRemove)
 
   return (
     <div
-      className={cx('shadow-modal', { shown })}
-      onClick={enableClose && onClose}
+      className={cx('modal', className, { shown })}
+      onClick={blankClose && onClose}
       onTransitionEnd={onRemoveModal}
     >
       {cloneModalContent(children)}
@@ -33,4 +33,4 @@ const TShadowModal: React.FC<IDrawerModalProps> = (props) => {
   )
 }
 
-export const ShadowModal = enhancePopupComponent(TShadowModal)
+export const Modal = enhancePopupComponent(TModal)

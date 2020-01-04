@@ -8,11 +8,11 @@ import { PageError } from './PageError'
 import { PageLoading } from './PageLoading'
 import { commonSlice } from 'shared/smoex-frontend-basic'
 import { Install } from './Install'
-import { BROWSER_INFO } from 'shared/react-dom-basic-kit/utils'
+import { BROWSER_INFO } from 'react-dom-basic-kit'
 import { IS_QQ_WEBVIEW } from '../utils/device'
 import { Controller } from './Controller'
 import { IS_WECHAT_WEBVIEW } from 'shared/smoex-moblie-basic/utils/device'
-import { useToastError } from 'shared/react-dom-basic-kit'
+import { useToastError } from 'react-dom-basic-kit'
 
 export const PageContext = React.createContext<any>(null)
 

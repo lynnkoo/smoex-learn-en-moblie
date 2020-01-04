@@ -1,6 +1,6 @@
 import * as React from 'react'
 import styles from './styles/App.module.scss'
-import { transformStyles } from 'shared/react-dom-basic-kit/utils'
+import { transformStyles } from 'react-dom-basic-kit'
 import { updateOffsetTop } from '../components/DrawerModal'
 import { useDefaultPageProps } from 'shared/smoex-moblie-basic/containers/PageRouter'
 const cx = transformStyles(styles)

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { IS_QQ_WEBVIEW } from '../utils/device'
 import styles from './styles/App.module.scss'
-import { transformStyles } from 'shared/react-dom-basic-kit/utils'
+import { transformStyles } from 'react-dom-basic-kit'
 
 const cx = transformStyles(styles)
 

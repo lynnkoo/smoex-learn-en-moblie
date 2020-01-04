@@ -1,6 +1,6 @@
 import * as React from 'react'
 import styles from './styles/Loading.module.scss'
-import { transformStyles } from 'shared/react-dom-basic-kit/utils'
+import { transformStyles } from 'react-dom-basic-kit'
 import LoadingSVG from '../assets/loading.svg'
 
 const cx = transformStyles(styles)
