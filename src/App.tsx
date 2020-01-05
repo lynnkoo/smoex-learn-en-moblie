@@ -1,14 +1,14 @@
 import * as React from 'react'
 import { Route } from 'react-router-dom'
-import { configureStore } from 'shared/redux-async-kit'
-import { Container } from 'react-dom-basic-kit'
-import { PageRouter } from 'shared/smoex-moblie-basic/containers/PageRouter'
-import { commonSlice } from 'shared/smoex-frontend-basic'
+import { configureStore, useActionCallback } from 'redux-async-kit'
+import { Container, useToastError } from 'react-dom-basic-kit'
+import { PageRouter } from 'smoex-mobile-basic'
+import { commonSlice, accountAsyncAction } from 'smoex-common-business'
 import { Provider } from 'react-redux'
 import { homeSlice } from 'common/slices/home'
-import { createLazyComponent } from 'shared/redux-async-kit'
-import { PageLoading } from 'shared/smoex-moblie-basic/containers/PageLoading'
-import { commonReducer } from '../shared/smoex-frontend-basic/logics/index'
+import { createLazyComponent } from 'redux-async-kit'
+import { PageLoading, Loading } from 'smoex-mobile-basic'
+import { commonReducer } from 'smoex-common-business'
 
 const store = configureStore({
   injector: commonSlice.injector,

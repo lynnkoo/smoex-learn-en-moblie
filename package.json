@@ -31,7 +31,7 @@
     "qs": "^6.9.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-dom-basic-kit": "^0.0.12",
+    "react-dom-basic-kit": "^0.0.20",
     "react-loadable": "^5.5.0",
     "react-redux": "^7.1.1",
     "react-router-dom": "^5.1.2",
@@ -40,6 +40,8 @@
     "redux-logger": "^3.0.6",
     "redux-observable": "^1.2.0",
     "reselect": "^4.0.0",
+    "smoex-common-business": "^0.0.2",
+    "smoex-mobile-basic": "^0.0.9",
     "uuid": "^3.3.3"
   },
   "devDependencies": {
@@ -53,6 +55,7 @@
     "@types/react": "^16.9.4",
     "@types/react-dom": "^16.9.1",
     "@types/react-redux": "^7.1.4",
+    "babel-loader": "^8.0.6",
     "husky": "^3.0.7",
     "lint-staged": "^9.4.0",
     "node-sass": "^4.12.0",

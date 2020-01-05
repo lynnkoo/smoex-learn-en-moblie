@@ -1,11 +1,6 @@
-import { accountReducer } from '../../shared/smoex-frontend-basic/logics'
-import { Loading } from 'shared/smoex-moblie-basic/components/Loading'
-import {
-  useScopedSelector,
-  useScopedAction,
-  injectReducers,
-  createSlice,
-} from 'shared/redux-async-kit'
+import { accountReducer } from 'smoex-common-business'
+import { Loading } from 'smoex-mobile-basic'
+import { useScopedSelector, useScopedAction, injectReducers, createSlice } from 'redux-async-kit'
 
 const SLICE_NAME = 'home'
 
