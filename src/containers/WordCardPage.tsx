@@ -9,7 +9,6 @@ import { usePageProps } from 'smoex-mobile-basic'
 import { useLocation } from 'react-router'
 import { useModal, asModalProps } from 'react-dom-basic-kit'
 import { ConfirmModal } from 'smoex-mobile-basic'
-import jsonp from 'jsonp'
 import { TipsModal } from 'smoex-mobile-basic'
 const cx = transformStyles(styles)
 

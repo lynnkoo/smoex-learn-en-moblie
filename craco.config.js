@@ -4,12 +4,9 @@
 //   // },
 // }
 
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 module.exports = {
-  style: {
-    sass: {
-      loaderOptions: (sassLoaderOptions, { env, paths }) => {
-        return sassLoaderOptions
-      },
-    },
+  webpack: {
+    plugins: [new BundleAnalyzerPlugin()],
   },
 }
