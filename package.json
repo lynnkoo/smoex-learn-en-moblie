@@ -9,30 +9,26 @@
     "eject": "craco eject",
     "build": "craco build",
     "build:prod": "NODE_ENV=production craco build && npm run upload:prod",
-    "upload:prod": "node --harmony ./bin/upload.js",
+    "upload:prod": "smoex-scripts upload ./build",
     "format": "npm run format:tslint && npm run format:stylelint && npm run format:prettier",
     "format:tslint": " tslint --fix --config ./tslint.json 'src/**/*.{ts,tsx}'",
     "format:stylelint": "stylelint --fix  --syntax scss 'src/**/*.*css'",
     "format:prettier": "prettier --config .prettierrc --write 'src/**/*.{js,jsx,ts,tsx,scss}'",
-    "analyz": "NODE_ENV=production npm_config_report=true npm run build"
+    "analyze": "NODE_ENV=production npm_config_report=false npm run build"
   },
   "dependencies": {
-    "@types/react-router-dom": "^5.1.3",
-    "ali-oss": "^6.1.1",
     "axios": "^0.19.0",
-    "js-yaml": "^3.13.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-dom-basic-kit": "^0.0.25",
     "react-redux": "^7.1.1",
     "react-router-dom": "^5.1.2",
     "redux-async-kit": "^0.0.8",
-    "smoex-common-business": "^0.0.2",
-    "smoex-mobile-basic": "^0.0.13"
+    "smoex-common-business": "^0.0.4",
+    "smoex-mobile-basic": "^0.0.16"
   },
   "devDependencies": {
     "@craco/craco": "^5.5.0",
-    "@types/ali-oss": "^6.0.4",
     "@types/classnames": "^2.2.9",
     "@types/jest": "^24.0.18",
     "@types/node": "^12.7.8",
@@ -40,6 +36,7 @@
     "@types/react": "^16.9.4",
     "@types/react-dom": "^16.9.1",
     "@types/react-redux": "^7.1.4",
+    "@types/react-router-dom": "^5.1.3",
     "babel-loader": "^8.0.6",
     "husky": "^3.0.7",
     "lint-staged": "^9.4.0",

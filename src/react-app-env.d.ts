@@ -3,4 +3,3 @@ declare module '*.scss' {
   const scss: { [key: string]: string }
   export = scss
 }
-declare module 'smoex-mobile-basic'

@@ -3,7 +3,6 @@ import qs from 'qs'
 import styles from './styles/WordCardPage.module.scss'
 import { transformStyles } from 'react-dom-basic-kit'
 import { useAsyncCallback } from 'redux-async-kit'
-import { client } from 'smoex-common-business'
 import AxiosClient from 'axios'
 import { usePageProps } from 'smoex-mobile-basic'
 import { useLocation } from 'react-router'
@@ -18,7 +17,6 @@ export const fetchAPI = AxiosClient.create({
   baseURL: process.env.PUBLIC_URL,
   // baseURL: 'https://api.smoex.com',
   timeout: 100000,
-  withCredentials: true,
   headers: {
     'Content-Type': 'application/x-www-form-urlencoded',
   },
@@ -252,7 +250,7 @@ export const WordCardPage: React.FC<IWordCardPageProps> = (props: any) => {
         <audio
           preload="none"
           ref={audioRef}
-          src={`http://media.shanbay.com/audio/us/${word.chars}.mp3`}
+          src={`//media.shanbay.com/audio/us/${word.chars}.mp3`}
         />
       )}
     </section>
