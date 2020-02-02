@@ -24,9 +24,9 @@ export const HomePage: React.FC = (props: any) => {
   const [visible, setVisible] = React.useState(true)
   const location = useLocation()
 
-  const toggleToast = useToggleToast(`testsdfafasd asdsa das dadsa asd asd asd`)
+  const toggleToast = useToggleToast()
   const toggle = () => {
-    toggleToast()
+    toggleToast(`testsdfafasd asdsa das dadsa asd asd asd`)
     setCount((x) => x * x)
   }
 

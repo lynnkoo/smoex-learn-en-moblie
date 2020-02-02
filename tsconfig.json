@@ -23,5 +23,5 @@
     "allowJs": true,
     "isolatedModules": true
   },
-  "include": ["src"]
+  "include": ["src", "shared"]
 }
