@@ -2,6 +2,7 @@
   "name": "smoex-learn-jp-mobile",
   "version": "0.1.0",
   "homepage": "https://learn.smoex.com",
+  "proxy": "https://admin.smoex.com",
   "private": true,
   "scripts": {
     "start": "craco start",
@@ -10,7 +11,7 @@
     "build": "craco build",
     "build:prod": "NODE_ENV=production craco build && npm run upload:prod",
     "upload:prod": "smoex-scripts upload ./build",
-    "format": "npm run format:tslint && npm run format:stylelint && npm run format:prettier",
+    "format": "npm run format:tslint && npm run format:prettier",
     "format:tslint": " tslint --fix --config ./tslint.json 'src/**/*.{ts,tsx}'",
     "format:stylelint": "stylelint --fix  --syntax scss 'src/**/*.*css'",
     "format:prettier": "prettier --config .prettierrc --write 'src/**/*.{js,jsx,ts,tsx,scss}'",
@@ -23,9 +24,9 @@
     "react-dom-basic-kit": "^0.0.26",
     "react-redux": "^7.1.1",
     "react-router-dom": "^5.1.2",
-    "redux-async-kit": "^0.0.10",
-    "smoex-common-business": "^0.0.4",
-    "smoex-mobile-basic": "^0.0.22"
+    "redux-async-kit": "^0.0.12",
+    "smoex-common-business": "^0.0.5",
+    "smoex-common-mobile": "^0.0.4"
   },
   "devDependencies": {
     "@craco/craco": "^5.5.0",

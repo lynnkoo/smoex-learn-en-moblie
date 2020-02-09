@@ -4,11 +4,11 @@ import styles from './styles/WordCardPage.module.scss'
 import { transformStyles } from 'react-dom-basic-kit'
 import { useAsyncCallback } from 'redux-async-kit'
 import AxiosClient from 'axios'
-import { usePageProps } from 'smoex-mobile-basic'
+import { usePageProps } from 'smoex-common-mobile'
 import { useLocation } from 'react-router'
-import { useModal, asModalProps } from 'react-dom-basic-kit'
-import { ConfirmModal } from 'smoex-mobile-basic'
-import { TipsModal } from 'smoex-mobile-basic'
+import { useModal } from 'react-dom-basic-kit'
+import { ConfirmModal } from 'smoex-common-mobile'
+import { TipsModal } from 'smoex-common-mobile'
 const cx = transformStyles(styles)
 
 type IWordCardPageProps = {}

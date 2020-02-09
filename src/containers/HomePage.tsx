@@ -4,7 +4,6 @@ import { transformStyles } from 'react-dom-basic-kit'
 import { Link, useLocation } from 'react-router-dom'
 import { accountAsyncAction } from 'smoex-common-business'
 import { homeSlice } from 'common/slices/home'
-import { FullScreenModal, MessageModal } from 'smoex-mobile-basic'
 import { useToggleToast } from 'react-dom-basic-kit'
 const cx = transformStyles(styles)
 
@@ -15,8 +14,8 @@ type IHomePageProps = {
 
 export const HomePage: React.FC = (props: any) => {
   const { className } = props
-  const [updateInfo, loading, error] = homeSlice.useAction(accountAsyncAction.getInfo)
-  const account = homeSlice.useSelector((home: any) => home.account)
+  const [updateInfo, updateState] = homeSlice.useAction(accountAsyncAction.getInfo)
+  const [account] = homeSlice.useSelector((home: any) => home.account)
   const [count, setCount] = React.useState(0)
   const onUpdateInfo = React.useCallback(() => {
     updateInfo(count)
@@ -36,9 +35,7 @@ export const HomePage: React.FC = (props: any) => {
       <div onClick={onUpdateInfo}>UPDATE NAME</div>
       <div>{count}</div>
       <div onClick={() => setCount((x) => x + 1)}>ADD COUNT</div>
-      <div>{loading && 'loading'}</div>
       <div>{account.loading && 'account loading'}</div>
-      <div>{error && 'error: ' + JSON.stringify(error)}</div>
       <Link to="/search">TO SEARCH</Link>
       <br />
       <Link to="/notfound">TO NOTFOUND</Link>

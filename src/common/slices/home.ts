@@ -1,5 +1,4 @@
 import { accountReducer } from 'smoex-common-business'
-import { Loading } from 'smoex-mobile-basic'
 import { useScopedSelector, useScopedAction, injectReducers, createSlice } from 'redux-async-kit'
 
 const SLICE_NAME = 'home'

@@ -2,12 +2,11 @@ import * as React from 'react'
 import { Route } from 'react-router-dom'
 import { configureStore, useActionCallback } from 'redux-async-kit'
 import { Container, useToastError } from 'react-dom-basic-kit'
-import { PageRouter } from 'smoex-mobile-basic'
+import { PageRouter, Footer } from 'smoex-common-mobile'
 import { commonSlice, accountAsyncAction } from 'smoex-common-business'
 import { Provider } from 'react-redux'
 import { homeSlice } from 'common/slices/home'
 import { createLazyComponent } from 'redux-async-kit'
-import { PageLoading, Loading } from 'smoex-mobile-basic'
 import { commonReducer } from 'smoex-common-business'
 
 const store = configureStore({

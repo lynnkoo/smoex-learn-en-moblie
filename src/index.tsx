@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react'
 import ReactDOM from 'react-dom'
-import './index.scss'
 import * as serviceWorker from './serviceWorker'
+// import App from './App'
 
 const App = React.lazy(() => import('./App' /* webpackChunkName: "app" */))
 
