@@ -1,0 +1,106 @@
+.search-page {
+  color: red;
+}
+
+.search-item {
+  border: 1px solid black;
+  height: 100px;
+}
+
+.detail-imgs {
+  background-color: #f5f5f5;
+  height: 100vw;
+}
+
+.detail-img {
+  background-size: cover;
+  display: flex;
+  height: 100vw;
+  justify-content: center;
+  position: relative;
+}
+
+.detail-back {
+  background-color: #bdbdbd;
+  border-radius: 14px;
+  color: #666666;
+  font-size: 24px;
+  height: 28px;
+  left: 10px;
+  line-height: 22px;
+  padding-left: 6px;
+  position: absolute;
+  text-decoration: none;
+  top: 10px;
+  width: 28px;
+  z-index: 1;
+}
+
+.detail-3d {
+  background-color: rgba(#bdbdbd, 0.8);
+  bottom: 10px;
+  color: #666666;
+  padding: 3px 8px;
+  position: absolute;
+  right: 10px;
+  z-index: 10;
+}
+
+.detail-img-idx {
+  background-color: rgba(#bdbdbd, 0.8);
+  border-radius: 10px;
+  bottom: 10px;
+  color: #666666;
+  font-size: 12px;
+  padding: 3px 14px 1px;
+  position: absolute;
+  z-index: 10;
+}
+
+.detail-tips {
+  background-image: linear-gradient(-48deg, #ff6a9c, #fe8574);
+  color: #fff;
+  font-size: 13px;
+  height: 48px;
+  line-height: 48px;
+  padding: 0 15px;
+}
+
+.tips-price-cur {
+  font-size: 11px;
+  margin-left: 12px;
+}
+
+.tips-price-num {
+  font-size: 18px;
+}
+
+.detail-info {
+  padding: 10px;
+}
+
+.detail-desc {
+  color: #bdbdbd;
+  font-size: 11px;
+  margin-top: 8px;
+}
+
+.detail-price {
+  // margin-top: 8px;
+  color: #666;
+  font-size: 13px;
+  height: 32px;
+  // padding: 0 15px;
+  line-height: 32px;
+}
+
+.detail-price-cur {
+  color: #f25d8e;
+  font-size: 11px;
+  margin-left: 6px;
+}
+
+.detail-price-num {
+  color: #f25d8e;
+  font-size: 18px;
+}

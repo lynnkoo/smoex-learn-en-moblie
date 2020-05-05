@@ -1,0 +1,77 @@
+.full-screen-modal {
+  background-color: #a0a0a0;
+  bottom: 0;
+
+  display: flex;
+  flex-direction: column;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 100%;
+  transition: all 0.3s;
+  z-index: 4000;
+
+  &.shown {
+    top: 0;
+  }
+}
+
+.full-screen-header {
+  color: white;
+  flex-shrink: 0;
+  font-size: 20px;
+  left: 10px;
+  position: absolute;
+  top: 10px;
+}
+
+.full-screen-content {
+  flex-grow: 1;
+  overflow-y: scroll;
+}
+
+.dropdown-modal {
+  height: 100%;
+  position: absolute;
+  transition: background-color 0.3s;
+  width: 100%;
+
+  &.shown {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
+}
+
+.confirm-modal {
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 0 0 10px black;
+
+  display: flex;
+  flex-direction: column;
+  left: 40px;
+  opacity: 0;
+  padding: 16px;
+  position: absolute;
+  right: 40px;
+  top: 220px;
+  transition: all 0.3s;
+  z-index: 4000;
+
+  &.shown {
+    opacity: 1;
+    top: 160px;
+  }
+}
+
+.confirm-btn {
+  border-top: 1px solid gray;
+  margin-top: 16px;
+  padding-top: 16px;
+  text-align: center;
+  width: 100%;
+}
+// .drawer-modal-content {
+//   background-color: white;
+//   margin-top: 48px;
+// }
