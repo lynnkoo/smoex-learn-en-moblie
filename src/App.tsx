@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Route } from 'react-router-dom'
 import { configureStore, useActionCallback } from 'redux-async-kit'
-import { Container, useToastError } from 'react-dom-basic-kit'
+import { AppContainer, useToastError } from 'react-dom-basic-kit'
 import { PageRouter, Footer } from 'smoex-common-mobile'
 import { commonSlice, accountAsyncAction } from 'smoex-common-business'
 import { Provider } from 'react-redux'
@@ -44,7 +44,7 @@ const WordCardPage = createLazyComponent({
 const App: React.FC = () => {
   return (
     <Provider store={store}>
-      <Container>
+      <AppContainer>
         <PageRouter>
           <Route exact path="/" component={HomePage} />
           <Route path="/search" component={SearchPage} />
@@ -52,7 +52,7 @@ const App: React.FC = () => {
           <Route path="/word/card" component={WordCardPage} />
           <Route path="/word" component={WordPage} />
         </PageRouter>
-      </Container>
+      </AppContainer>
     </Provider>
   )
 }

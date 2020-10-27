@@ -115,7 +115,7 @@ const WordVoiceText: React.FC<any> = (props) => {
 
 export const WordProcess: React.FC<any> = (props) => {
   const { idx, max } = props
-  const [showTips] = useModal((mProps: any) => (
+  const modal = useModal((mProps: any) => (
     <TipsModal {...mProps}>
       <div>
         This is a tips for test tips modal
@@ -138,7 +138,7 @@ export const WordProcess: React.FC<any> = (props) => {
   ))
   return (
     <div className={cx('word-process')}>
-      <div className={cx('word-tips')} onClick={showTips}>
+      <div className={cx('word-tips')} onClick={modal.show}>
         Tips
       </div>
       <div className={cx('word-num')}>
@@ -166,7 +166,7 @@ export const WordCardPage: React.FC<IWordCardPageProps> = (props: any) => {
     }
   }
 
-  const [showConfirm, closeConfirm] = useModal((mProps: any) => (
+  const confirm = useModal((mProps: any) => (
     <ConfirmModal {...mProps} onConfirm={onConfirm}>
       <div>Please confirm for play audio.</div>
     </ConfirmModal>
@@ -214,7 +214,7 @@ export const WordCardPage: React.FC<IWordCardPageProps> = (props: any) => {
         .play()
         .catch((e) => {
           if (!played) {
-            showConfirm()
+            confirm.show()
           }
         })
         .then(() => {
